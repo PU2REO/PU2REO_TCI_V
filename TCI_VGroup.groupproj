@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2BB58C66-961D-4CF1-B11C-B2F1664B47DD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Packages\TIcomCIV.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test Program\TesteRadio.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TIcomCIV">
+        <MSBuild Projects="Packages\TIcomCIV.dproj"/>
+    </Target>
+    <Target Name="TIcomCIV:Clean">
+        <MSBuild Projects="Packages\TIcomCIV.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TIcomCIV:Make">
+        <MSBuild Projects="Packages\TIcomCIV.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TesteRadio">
+        <MSBuild Projects="Test Program\TesteRadio.dproj"/>
+    </Target>
+    <Target Name="TesteRadio:Clean">
+        <MSBuild Projects="Test Program\TesteRadio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TesteRadio:Make">
+        <MSBuild Projects="Test Program\TesteRadio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TIcomCIV;TesteRadio"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TIcomCIV:Clean;TesteRadio:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TIcomCIV:Make;TesteRadio:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
