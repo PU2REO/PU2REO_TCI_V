@@ -42,5 +42,5 @@ Commercially available USB-to-CI-V cables, such as those from Valley Enterprises
   * [Raize CodeSite (Unnecessary. Using it just for debug)](https://raize.com/codesite/)
   
 # Status: 
-Incomplete, but running basic stuff like reading/writing memory positions and some commands. I'll try to advance it in my spare time.
+$${\color{red}Incomplete}$$, but running basic stuff like reading/writing memory positions and some commands. I'll try to advance it in my spare time.
 Feel free to update it and request pushes.
