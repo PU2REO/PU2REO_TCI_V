@@ -137,7 +137,8 @@ type
     procedure                     SetManualNotch(Value: TManualNotchState);
     procedure                     SetModulationMode(Value: TModulationMode);
     procedure                     ClearMemory(Bank: TMemoryBanks; Position: SmallInt);
-    procedure                     UpdateLevelReadings;   
+    procedure                     UpdateLevelReadings;
+    procedure                     AdvancedConfig;
   published
     { Published declarations }
     property About:                   TCIVAboutInfo                 read FAbout write FAbout;
@@ -1114,6 +1115,12 @@ begin
   // send read Id
   sAux := AnsiString(CIV_COMMAND_LEVEL_READINGS + CIV_SUB_CMD_READING_ID_VALUE);
   Self.SendPacket(sAux);  
+end;
+
+procedure TIcomCIV.AdvancedConfig;
+begin
+  // start advanced configuration window
+  Self.FPort.ConfigDialog;
 end;
 
 end.

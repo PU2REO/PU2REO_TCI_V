@@ -17,7 +17,6 @@ type
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
-    IcomCIV1: TIcomCIV;
     Button6: TButton;
     Button7: TButton;
     Button8: TButton;
@@ -31,6 +30,7 @@ type
     Button16: TButton;
     Memo1: TMemo;
     Button17: TButton;
+    IcomCIV1: TIcomCIV;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
@@ -174,7 +174,7 @@ end;
 procedure TfrmMain.Button5Click(Sender: TObject);
 begin
   // Read a Single Memory Channel
-  IcomCIV1.ReadMemory(mbBank_A, 1);
+  IcomCIV1.ReadMemory(mbBank_B, 1);
 end;
 
 procedure TfrmMain.Button6Click(Sender: TObject);
@@ -187,6 +187,10 @@ procedure TfrmMain.Button7Click(Sender: TObject);
 var
   I, J: Integer;
 begin
+   // disable button
+   Button7.Enabled := False;
+   Self.Repaint;
+
    // read 99 per bank
    for I:= Ord(mbBank_A) to Ord(mbBank_E) do begin
     for J:=1 to 99 do IcomCIV1.ReadMemory(TMemoryBanks(I), J);
@@ -194,6 +198,9 @@ begin
 
    // read scan edges & Call Channel (Last 8 positions af each bank repeats themselves in each bank)
    for J:=100 to 107 do IcomCIV1.ReadMemory(mbBank_E, J);
+
+   // enable button
+   Button7.Enabled := True;
 end;
 
 procedure TfrmMain.Button8Click(Sender: TObject);

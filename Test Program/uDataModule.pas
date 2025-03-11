@@ -72,7 +72,7 @@ begin
                           '[mem_name] TEXT(9),' +
                           '[scan_sel] BOOL NOT NULL,' +
                           '[freq1] FLOAT,' +
-                          '[mode] SMALLINT,' +
+                          '[mode1] SMALLINT,' +
                           '[filter1] SMALLINT,' +
                           '[flags1] SMALLINT,' +
                           '[tx_subtone1] FLOAT,' +

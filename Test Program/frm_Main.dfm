@@ -57,7 +57,7 @@ object frmMain: TfrmMain
     Top = 132
     Width = 121
     Height = 25
-    Caption = 'Read Memory A-01'
+    Caption = 'Read Memory B-01'
     TabOrder = 4
     OnClick = Button5Click
   end
@@ -187,5 +187,16 @@ object frmMain: TfrmMain
     Caption = 'Read Signal'
     TabOrder = 17
     OnClick = Button17Click
+  end
+  object IcomCIV1: TIcomCIV
+    About = civAboutInfo
+    Active = False
+    BaudRate = 19200
+    PortNumber = 3
+    RadioModel = rmIC_7000
+    OnErrorSerialDevice = IcomCIV1ErrorSerialDevice
+    OnReadMemoryBank = IcomCIV1ReadMemoryBank
+    Left = 504
+    Top = 8
   end
 end

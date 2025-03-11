@@ -3,8 +3,8 @@ object frmCIVAboutBox: TfrmCIVAboutBox
   Top = 0
   BorderStyle = bsDialog
   Caption = 'About CI-V Component'
-  ClientHeight = 170
-  ClientWidth = 627
+  ClientHeight = 217
+  ClientWidth = 585
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -667,5 +667,14 @@ object frmCIVAboutBox: TfrmCIVAboutBox
         FFFF}
       ExplicitHeight = 294
     end
+  end
+  object btnClose: TButton
+    Left = 503
+    Top = 184
+    Width = 75
+    Height = 25
+    Caption = 'Close'
+    TabOrder = 1
+    OnClick = btnCloseClick
   end
 end

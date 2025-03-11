@@ -3,8 +3,8 @@ program TesteRadio;
 uses
   Vcl.Forms,
   frm_Main in 'frm_Main.pas' {frmMain},
-  uDBUtils in '..\Globais\uDBUtils.pas',
-  uDataModule in 'uDataModule.pas' {frmDataModule: TDataModule};
+  uDataModule in 'uDataModule.pas' {frmDataModule: TDataModule},
+  uDBUtils in '..\..\PU2REO_MemoryManager\Globals\uDBUtils.pas';
 
 {$R *.res}
 

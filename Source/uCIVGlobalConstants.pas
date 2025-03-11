@@ -4,8 +4,8 @@ interface
 
 const
   // component constants
-  CIV_COMPONENT_NAME                        = 'Icom Communications Interface V Component';
-  CIV_COMPONENT_VERSION                     = 'v24.11';
+  CIV_COMPONENT_NAME                        = 'PU2REO''s Icom Communications Interface V Component';
+  CIV_COMPONENT_VERSION                     = 'v25.03.01';
   CIV_COMPONENT_PAGE                        = 'Icom CI-V';
   CIV_PORT_DEFAULT_PORT_NO                  = 3;
   CIV_PORT_DEFAULT_BAUD_RATE                = 19200;

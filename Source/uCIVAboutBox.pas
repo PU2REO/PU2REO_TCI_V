@@ -12,8 +12,10 @@ type
     imgIcom: TImage;
     lbTitle: TLabel;
     lbDescription: TLabel;
+    btnClose: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure btnCloseClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -26,6 +28,12 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmCIVAboutBox.btnCloseClick(Sender: TObject);
+begin
+  // close this form
+  Close;
+end;
 
 procedure TfrmCIVAboutBox.FormCreate(Sender: TObject);
 begin

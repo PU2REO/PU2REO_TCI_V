@@ -5,7 +5,9 @@ object frmDataModule: TfrmDataModule
   Width = 280
   object uniConnection: TUniConnection
     ProviderName = 'SQLite'
-    Database = 'Database.db'
+    Database = 
+      'C:\Users\Edson\Documents\Embarcadero\Studio\Projects\PU2REO_Memo' +
+      'ryManager\DataBase\Database.db'
     Left = 32
     Top = 8
   end

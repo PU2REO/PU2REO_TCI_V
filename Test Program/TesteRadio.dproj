@@ -125,12 +125,12 @@
         <DCCReference Include="frm_Main.pas">
             <Form>frmMain</Form>
         </DCCReference>
-        <DCCReference Include="..\Globais\uDBUtils.pas"/>
         <DCCReference Include="uDataModule.pas">
             <Form>frmDataModule</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="..\..\PU2REO_MemoryManager\Globals\uDBUtils.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
