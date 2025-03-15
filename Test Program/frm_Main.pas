@@ -136,7 +136,7 @@ end;
 procedure TfrmMain.Button2Click(Sender: TObject);
 var i: Byte;
 begin
-  for I:=1 to 109 do IcomCIV1.ReadMemory(mbBank_A, i);
+  for I:=1 to 109 do IcomCIV1.ReadMemorySlot(mbBank_A, i);
 end;
 
 procedure TfrmMain.Button3Click(Sender: TObject);
@@ -163,18 +163,18 @@ begin
 //  mdMemData.Name := 'POWER CH1';
 
   // write data
-  IcomCIV1.WriteMemory(mdMemData);
+  IcomCIV1.WriteMemorySlot(mdMemData);
 end;
 
 procedure TfrmMain.Button4Click(Sender: TObject);
 begin
-  IcomCIV1.ClearMemory(mbBank_B, 1);
+  IcomCIV1.ClearMemorySlot(mbBank_B, 1);
 end;
 
 procedure TfrmMain.Button5Click(Sender: TObject);
 begin
   // Read a Single Memory Channel
-  IcomCIV1.ReadMemory(mbBank_B, 1);
+  IcomCIV1.ReadMemorySlot(mbBank_B, 1);
 end;
 
 procedure TfrmMain.Button6Click(Sender: TObject);
@@ -193,11 +193,11 @@ begin
 
    // read 99 per bank
    for I:= Ord(mbBank_A) to Ord(mbBank_E) do begin
-    for J:=1 to 99 do IcomCIV1.ReadMemory(TMemoryBanks(I), J);
+    for J:=1 to 99 do IcomCIV1.ReadMemorySlot(TMemoryBanks(I), J);
    end;
 
    // read scan edges & Call Channel (Last 8 positions af each bank repeats themselves in each bank)
-   for J:=100 to 107 do IcomCIV1.ReadMemory(mbBank_E, J);
+   for J:=100 to 107 do IcomCIV1.ReadMemorySlot(mbBank_E, J);
 
    // enable button
    Button7.Enabled := True;

@@ -178,6 +178,8 @@ object frmMain: TfrmMain
     ScrollBars = ssVertical
     TabOrder = 16
     OnDblClick = Memo1DblClick
+    ExplicitTop = 320
+    ExplicitWidth = 559
   end
   object Button17: TButton
     Left = 0

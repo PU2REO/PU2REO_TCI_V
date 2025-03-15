@@ -127,8 +127,8 @@ type
     constructor                   Create(AOwner: TComponent); override;
     destructor                    Destroy; override;
     procedure                     Speech(Mode: TSpeechMode);
-    procedure                     ReadMemory(Bank: TMemoryBanks; Position: SmallInt);
-    procedure                     WriteMemory(MemoryData: TMemoryData);
+    procedure                     ReadMemorySlot(Bank: TMemoryBanks; Slot: SmallInt);
+    procedure                     WriteMemorySlot(MemoryData: TMemoryData);
     procedure                     SetPowerState(Value: TPowerState);
     procedure                     SetPreAmp(Value: TPreAmpSetting);
     procedure                     SetNoiseBlanker(Value: TNoiseBlankerState);
@@ -136,7 +136,7 @@ type
     procedure                     SetAutoNotch(Value: TAutoNotchState);
     procedure                     SetManualNotch(Value: TManualNotchState);
     procedure                     SetModulationMode(Value: TModulationMode);
-    procedure                     ClearMemory(Bank: TMemoryBanks; Position: SmallInt);
+    procedure                     ClearMemorySlot(Bank: TMemoryBanks; Slot: SmallInt);
     procedure                     UpdateLevelReadings;
     procedure                     AdvancedConfig;
   published
@@ -683,7 +683,7 @@ end;
 
 // ---------------------------------------------------------------------------
 
-procedure TIcomCIV.ReadMemory(Bank: TMemoryBanks; Position: SmallInt);
+procedure TIcomCIV.ReadMemorySlot(Bank: TMemoryBanks; Slot: SmallInt);
 var
   sAux:            AnsiString;
   bHigh, bLow:     Byte;
@@ -691,18 +691,18 @@ begin
   // codesite debug
   {$IFDEF DEBUG}
     // not necessary to show echo commands
-    CodeSite.EnterMethod('ReadMemory');
+    CodeSite.EnterMethod('ReadMemorySlot');
   {$ENDIF}
 
   // check memory indexes
-  if Position > 99 then begin
+  if Slot > 99 then begin
     // set aditional index
     bHigh := 1;
-    bLow  := (Position - 100) and $00FF;
+    bLow  := (Slot - 100) and $00FF;
   end else begin
     // no additional index need
     bHigh := 0;
-    bLow  := Position and $00FF;
+    bLow  := Slot and $00FF;
   end;
 
   // assembly command string
@@ -714,7 +714,7 @@ begin
 
   // codesite debug
   {$IFDEF DEBUG}
-    CodeSite.Send(csmInfo, Format('Position: %d - Packet: %s', [Position, Self.CharStrToHexStr(sAux)]));
+    CodeSite.Send(csmInfo, Format('Slot: %d - Packet: %s', [Slot, Self.CharStrToHexStr(sAux)]));
   {$ENDIF}
 
   // send string to the serial port
@@ -722,13 +722,13 @@ begin
 
   // codesite debug
   {$IFDEF DEBUG}
-    CodeSite.ExitMethod('ReadMemory');
+    CodeSite.ExitMethod('ReadMemorySlot');
   {$ENDIF}
 end;
 
 // ---------------------------------------------------------------------------
 
-procedure TIcomCIV.WriteMemory(MemoryData: TMemoryData);
+procedure TIcomCIV.WriteMemorySlot(MemoryData: TMemoryData);
 var
   sAux:            AnsiString;
   bHigh, bLow:     Byte;
@@ -736,7 +736,7 @@ begin
   // codesite debug
   {$IFDEF DEBUG}
     // not necessary to show echo commands
-    CodeSite.EnterMethod('WriteMemory');
+    CodeSite.EnterMethod('WriteMemorySlot');
   {$ENDIF}
 
   // check memory indexes
@@ -781,7 +781,7 @@ begin
   // codesite debug
   {$IFDEF DEBUG}
     CodeSite.Send(csmInfo, Format('Write Packet: %s', [Self.CharStrToHexStr(sAux)]));
-    CodeSite.ExitMethod('WriteMemory');
+    CodeSite.ExitMethod('WriteMemorySlot');
   {$ENDIF}
 end;
 
@@ -866,7 +866,7 @@ end;
 
 // ---------------------------------------------------------------------------
 
-procedure TIcomCIV.ClearMemory(Bank: TMemoryBanks; Position: SmallInt);
+procedure TIcomCIV.ClearMemorySlot(Bank: TMemoryBanks; Slot: SmallInt);
 var
   sAux:             AnsiString;
   bHigh, bLow:      Byte;
@@ -874,7 +874,7 @@ begin
   // codesite debug
   {$IFDEF DEBUG}
     // not necessary to show echo commands
-    CodeSite.EnterMethod('ClearMemory');
+    CodeSite.EnterMethod('ClearMemorySlot');
   {$ENDIF}
 
   // select memory bank
@@ -884,14 +884,14 @@ begin
   Self.SendPacket(sAux);
   
   // assembly memory position
-  if Position > 99 then begin
+  if Slot > 99 then begin
     // set aditional index
     bHigh := 1;
-    bLow  := (Position - 100) and $00FF;
+    bLow  := (Slot - 100) and $00FF;
   end else begin
     // no additional index need
     bHigh := 0;
-    bLow  := Position and $00FF;
+    bLow  := Slot and $00FF;
   end;
 
   // select channel
@@ -907,7 +907,7 @@ begin
   // codesite debug
   {$IFDEF DEBUG}
     // not necessary to show echo commands
-    CodeSite.ExitMethod('ClearMemory');
+    CodeSite.ExitMethod('ClearMemorySlot');
   {$ENDIF}
 end;
 
