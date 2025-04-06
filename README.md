@@ -6,7 +6,6 @@ Icom's CI-V protocol, standing for "Communication Interface - V," is a proprieta
 # Technical Overview:
 
 The CI-V protocol operates on a simple, bidirectional, single-wire TTL (Transistor-Transistor Logic) signaling system. This system consists of a data line (DATA) and a ground reference (GND), with the DATA line held high when idle. Any device can initiate communication by pulling the line low and sending the Icom attention command (FEFE). This setup allows multiple devices to share the same communication line, provided each has a unique hexadecimal address. 
-KA1MDA.ORG
 
 # Compatible Devices:
 
